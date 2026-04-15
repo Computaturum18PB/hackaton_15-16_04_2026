@@ -13,7 +13,7 @@ class BaseWizard1(QWizard):
         self.setWizardStyle(QWizard.ModernStyle)
 
         for i in range(count):
-            page = Shablon(count, i, list[i])
+            page = Shablon(count, i, list)
             self.addPage(page)
 
         self.setButtonText(QWizard.FinishButton, "Закончить")

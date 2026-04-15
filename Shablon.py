@@ -2,32 +2,31 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QWizardPage,
                                QGroupBox, QPushButton, QLabel, QLineEdit)
 
 class Shablon(QWizardPage):
-    def __init__(self, count, number, type):
+    def __init__(self, count, number, list):
         super().__init__()
         self.count = count
         self.number = number
+        self.list = list
 
-        if(type == 0):
-            main_layout = QVBoxLayout()
+        main_layout = QVBoxLayout()
 
-            button_layout = QHBoxLayout()
-            for i in range(count):
-                button = QPushButton()
-                button_layout.addWidget(button)
-            main_layout.addLayout(button_layout)
+        button_layout = QHBoxLayout()
+        for i in range(count):
+            button = QPushButton()
+            button_layout.addWidget(button)
+        main_layout.addLayout(button_layout)
 
-            info_label = QLabel("viwobnowb")
+        if(self.list[number] == 0):
+            info_label = QLabel()
 
-            basement_label = QLabel("hvowhvnpw")
+            basement_label = QLabel()
 
             main_layout.addWidget(info_label)
             main_layout.addWidget(basement_label)
             self.setLayout(main_layout)
 
-        elif(type == 1):
-            main_layout = QVBoxLayout()
-
-            query_label = QLabel("cubbnkn")
+        if(self.list[number] == 1):
+            query_label = QLabel()
 
             self.ansver = QLineEdit()
 
