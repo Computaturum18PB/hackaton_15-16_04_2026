@@ -44,7 +44,7 @@ class MainWindow(QWidget):
 
     @Slot()
     def start_theme_1(self):
-        list = [0, 2, 0]
+        list = [0, 0, 0, 2, 2, 2]
         wizard = BaseWizard1(len(list), list, self)
         wizard.show()
 

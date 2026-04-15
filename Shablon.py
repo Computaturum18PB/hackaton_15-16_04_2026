@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import (QMessageBox, QWidget, QVBoxLayout, QHBoxLayout, QWizardPage,
+from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QWizardPage,
                                QGroupBox, QPushButton, QLabel, QLineEdit, QCheckBox)
 from PySide6.QtGui import QPixmap, Qt
 import markdown
@@ -8,13 +8,13 @@ def load_file(path):
         return file.read()
 
 class Shablon(QWizardPage):
-    def __init__(self, count, number, list, pages, image):
+    def __init__(self, count, number, list):
         super().__init__()
         self.count = count
         self.number = number
         self.list = list
-        self.pages = pages
-        self.pictures = image
+        self.pages = ["lesson1.md", "lesson2.md", "lesson3.md"]
+        self.pictures = ["oil.jpeg", "sheme.png", "omg.png"]
 
         main_layout = QVBoxLayout()
 

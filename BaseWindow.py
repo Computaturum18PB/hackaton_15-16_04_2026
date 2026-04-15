@@ -1,6 +1,5 @@
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QWizard)
 
-import InfoWindow
 from Shablon import Shablon
 
 
