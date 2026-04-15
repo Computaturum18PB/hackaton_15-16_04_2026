@@ -54,7 +54,10 @@ class Shablon(QWizardPage):
             markdown_text_answer_4 = markdown.markdown(text_answer_4)
 
             query_label = QLabel(markdown_text_query)
-            group_layout = QGroupBox()
+            group_box = QGroupBox("Выберите ответы")  # можно добавить заголовок
+    
+            group_layout = QVBoxLayout()
+            group_box.setLayout(group_layout)
 
             self.answer1 = QCheckBox(markdown_text_answer_1)
             self.answer2 = QCheckBox(markdown_text_answer_2)
@@ -67,7 +70,7 @@ class Shablon(QWizardPage):
             group_layout.addWidget(self.answer4)
 
             main_layout.addWidget(query_label)
-            main_layout.addWidget(group_layout)
+            main_layout.addWidget(group_box)
             self.setLayout(main_layout)
     
         if (self.list[self.number] == 2):
