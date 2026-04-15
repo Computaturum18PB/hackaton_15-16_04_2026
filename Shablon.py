@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import (QMessageBox, QWidget, QVBoxLayout, QHBoxLayout, QWizardPage,
                                QGroupBox, QPushButton, QLabel, QLineEdit)
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, Qt
 import markdown
 
 def load_file(path):
@@ -17,7 +17,7 @@ class Shablon(QWizardPage):
         self.index_page = 0
         self.index_picture = 0
 
-        if (type == 0):
+        if (type == 0):            
             main_layout = QVBoxLayout()
 
             button_layout = QHBoxLayout()
@@ -30,6 +30,8 @@ class Shablon(QWizardPage):
             markdown_text = markdown.markdown(text)
 
             info_label = QLabel(markdown_text)
+            info_label.setWordWrap(True)
+            info_label.setTextFormat(Qt.RichText)
             basement_label = QLabel()
 
             main_layout.addWidget(info_label)
@@ -53,7 +55,7 @@ class Shablon(QWizardPage):
             main_layout.addWidget(self.ansver)
             self.setLayout(main_layout)
     
-        elif (type == 2):
+        elif (type == 2):            
             main_layout = QVBoxLayout()
             
             button_layout = QHBoxLayout()
