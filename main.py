@@ -1,11 +1,18 @@
 from PySide6.QtWidgets import (QApplication, QMainWindow)
-# from PySide6.QtCore import Qt, Slot
-# from PySide6.QtGui import QFont
-from MainWindow import MainWindow
+from PySide6.QtGui import QPixmap
 
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        
+        icon = QPixmap("/images/icon.png")
 
-if __name__ == '__main__':
-    app = QApplication()
-    window = MainWindow()
-    window.show()
-    app.exec_()
+        self.setWindowTitle("Обучающий курс: \"Переработка нефти\"")
+        self.setWindowIcon(icon)
+        self.setFixedSize(500, 500)
+        
+
+app = QApplication()
+window = MainWindow()
+window.show()
+app.exec()
