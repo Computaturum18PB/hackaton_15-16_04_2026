@@ -1,7 +1,8 @@
-from PySide6.QtWidgets import (QApplication, QMainWindow)
+from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout,
+                               QLabel, QGridLayout, QPushButton)
 from PySide6.QtGui import QPixmap
 
-class MainWindow(QMainWindow):
+class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         
@@ -10,7 +11,31 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Обучающий курс: \"Переработка нефти\"")
         self.setWindowIcon(icon)
         self.setFixedSize(500, 500)
-        
+
+        main_layuot = QVBoxLayout()
+
+        title_label = QLabel("Курс про переработку нефти")
+        main_layuot.addWidget(title_label)
+
+        grid_layout = QGridLayout()
+
+        label1 = QLabel("Переработка нефти")
+        label2 = QLabel("Первичная переработка нефти")
+        label3 = QLabel("Вторичная переработка нефти")
+
+        button1 = QPushButton("Перейти")
+        button2 = QPushButton("Перейти")
+        button3 = QPushButton("Перейти")
+
+        grid_layout.addWidget(label1, 0, 0)
+        grid_layout.addWidget(label2, 1, 0)
+        grid_layout.addWidget(label3, 2, 0)
+        grid_layout.addWidget(button1, 0, 1)
+        grid_layout.addWidget(button2, 1, 1)
+        grid_layout.addWidget(button3, 2, 1)
+        main_layuot.addLayout(grid_layout)
+
+        self.setLayout(main_layuot)
 
 app = QApplication()
 window = MainWindow()
