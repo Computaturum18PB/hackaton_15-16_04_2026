@@ -2,6 +2,9 @@ from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout,
                                QLabel, QGridLayout, QPushButton)
 from PySide6.QtGui import QPixmap
 
+from BaseWindow import BaseWizard1
+
+
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -27,6 +30,8 @@ class MainWindow(QWidget):
         button2 = QPushButton("Перейти")
         button3 = QPushButton("Перейти")
 
+        button1.clicked.connect(self.start_theme_1)
+
         grid_layout.addWidget(label1, 0, 0)
         grid_layout.addWidget(label2, 1, 0)
         grid_layout.addWidget(label3, 2, 0)
@@ -36,6 +41,10 @@ class MainWindow(QWidget):
         main_layuot.addLayout(grid_layout)
 
         self.setLayout(main_layuot)
+    
+    def start_theme_1(self):
+        list = [0, 0, 0, 1, 1, 1]
+        wizard = BaseWizard1(len(list), list, self)
 
 app = QApplication()
 window = MainWindow()
