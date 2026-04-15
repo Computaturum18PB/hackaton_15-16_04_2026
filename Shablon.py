@@ -22,6 +22,7 @@ class Shablon(QWizardPage):
 
             main_layout.addWidget(info_label)
             main_layout.addWidget(basement_label)
+            self.setLayout(main_layout)
 
         elif(type == 1):
             main_layout = QVBoxLayout()
@@ -32,3 +33,4 @@ class Shablon(QWizardPage):
 
             main_layout.addWidget(query_label)
             main_layout.addWidget(self.ansver)
+            self.setLayout(main_layout)

@@ -1,3 +1,4 @@
+from PySide6.QtCore import Slot
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout,
                                QLabel, QGridLayout, QPushButton)
 from PySide6.QtGui import QPixmap
@@ -41,10 +42,12 @@ class MainWindow(QWidget):
         main_layuot.addLayout(grid_layout)
 
         self.setLayout(main_layuot)
-    
+
+    @Slot()
     def start_theme_1(self):
         list = [0, 0, 0, 1, 1, 1]
         wizard = BaseWizard1(len(list), list, self)
+        wizard.show()
 
 app = QApplication()
 window = MainWindow()
