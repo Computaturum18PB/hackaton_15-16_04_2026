@@ -44,8 +44,10 @@ class MainWindow(QWidget):
 
     @Slot()
     def start_theme_1(self):
-        list = [0, 2, 0]
-        wizard = BaseWizard1(len(list), list, self)
+        list = [0, 2, 1]
+        info = ["lesson1.md", "imagetext1.md", "test1.md"]
+        image = ["", "oil.jpeng", ""]
+        wizard = BaseWizard1(len(list), list, info, image, self)
         wizard.show()
 
 app = QApplication()

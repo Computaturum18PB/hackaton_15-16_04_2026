@@ -25,7 +25,7 @@ class Shablon(QWizardPage):
         main_layout.addLayout(button_layout)
 
         if(self.list[number] == 0):
-            text = load_file("course\data\\" + self.pages[self.number])
+            text = load_file("course\\data\\" + self.pages[self.number])
             markdown_text = markdown.markdown(text)
 
             info_label = QLabel(markdown_text)
@@ -38,7 +38,7 @@ class Shablon(QWizardPage):
             self.setLayout(main_layout)
 
         if(self.list[number] == 1):
-            text = load_file("course\data\\" + self.pages[self.number])
+            text = load_file("course\\data\\" + self.pages[self.number])
 
             text_query = text.split("\n")[0]
             text_answer_1 = text.split("\n")[1]
@@ -61,13 +61,19 @@ class Shablon(QWizardPage):
             self.answer3 = QCheckBox(markdown_text_answer_3)
             self.answer4 = QCheckBox(markdown_text_answer_4)
 
+            group_layout.addWidget(self.answer1)
+            group_layout.addWidget(self.answer2)
+            group_layout.addWidget(self.answer3)
+            group_layout.addWidget(self.answer4)
+
+
 
             main_layout.addWidget(query_label)
-            main_layout.addWidget(self.ansver)
+            main_layout.addWidget(group_layout)
             self.setLayout(main_layout)
     
         if (self.list[self.number] == 2):
-            image = QPixmap("course\images\\" + self.pictures[self.number])
+            image = QPixmap("course\\images\\" + self.pictures[self.number])
             image_label = QLabel(self)
             image_label.setPixmap(image)
             
