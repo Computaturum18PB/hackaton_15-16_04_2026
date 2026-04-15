@@ -8,13 +8,13 @@ def load_file(path):
         return file.read()
 
 class Shablon(QWizardPage):
-    def __init__(self, count, number, list):
+    def __init__(self, count, number, list, info, image):
         super().__init__()
         self.count = count
         self.number = number
         self.list = list
-        self.pages = ["lesson1.md", "lesson2.md", "lesson3.md"]
-        self.pictures = ["oil.jpeg", "sheme.png", "omg.png"]
+        self.pages = info
+        self.pictures = image
 
         main_layout = QVBoxLayout()
 
