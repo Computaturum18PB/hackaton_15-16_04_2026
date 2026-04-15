@@ -27,7 +27,7 @@ class Shablon(QWizardPage):
 
         if(self.list[number] == 1):
             query_label = QLabel()
-
+            group_layout = QGroupBox()
             self.ansver = QLineEdit()
 
             main_layout.addWidget(query_label)
