@@ -7,7 +7,7 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("Обучающий курс: \"Переработка нефти\"")
         self.setWindowIcon(QIcon(QPixmap("images/icon.png")))
-        self.showNormal()
+        self.showMaximized()
 
 app = QApplication()
 window = MainWindow()
