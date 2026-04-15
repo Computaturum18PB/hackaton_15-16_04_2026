@@ -17,4 +17,3 @@ class BaseWizard1(QWizard):
             self.addPage(page)
 
         self.setButtonText(QWizard.FinishButton, "Закончить")
-
