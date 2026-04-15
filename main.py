@@ -1,7 +1,7 @@
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout,
                                QLabel, QGridLayout, QPushButton)
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QIcon, QPixmap
 
 from BaseWindow import BaseWizard1
 
@@ -9,12 +9,11 @@ from BaseWindow import BaseWizard1
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        
-        icon = QPixmap("/images/icon.png")
 
         self.setWindowTitle("Обучающий курс: \"Переработка нефти\"")
-        self.setWindowIcon(icon)
-        self.setFixedSize(500, 500)
+        
+        self.setWindowIcon(QIcon(QPixmap("images/icon.png")))
+        self.showMaximized()
 
         main_layuot = QVBoxLayout()
 
