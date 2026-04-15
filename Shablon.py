@@ -130,11 +130,19 @@ class Shablon(QWizardPage):
             content_widget = QWidget()
             content_layout = QVBoxLayout(content_widget)
 
+            target_height = 400
+
             image = QPixmap("course\\images\\" + self.pictures[self.number])
             # text = load_file("course\\data\\" + self.pages[self.number])
             # markdown_text = markdown.markdown(text)
+            scaled_image = image.scaledToHeight(target_height, Qt.SmoothTransformation)
             image_label = QLabel(self)
-            image_label.setPixmap(image)
+            image_label.setPixmap(scaled_image)
+
+            image_size = scaled_image.size()
+            page_width = image_size.width() + 100
+            page_height = image_size.height() + 150
+            self.setFixedSize(page_width, page_height)
 
             # legend_label = QLabel(markdown_text)
             legend_label = QLabel()
