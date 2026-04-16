@@ -48,7 +48,6 @@ class Shablon(QWizardPage):
         main_layout.addLayout(image_layout)
 
         if(self.list[number] == 0):
-            # Используем путь к курсу
             file_path = os.path.join(self.course_path, "data", self.pages[self.number])
             text = load_file(file_path)
             markdown_text = markdown.markdown(text)
