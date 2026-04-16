@@ -2,20 +2,22 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QWizardPage,
                                QGroupBox, QPushButton, QLabel, QLineEdit, QCheckBox,
                                QRadioButton, QButtonGroup, QMessageBox, QScrollArea)
 from PySide6.QtGui import QPixmap, Qt
-# import markdown
+import markdown
+import os
 
 def load_file(path):
     with open(path, 'r', encoding='utf-8') as file:
         return file.read()
 
 class Shablon(QWizardPage):
-    def __init__(self, count, number, list, info, image):
+    def __init__(self, count, number, list, info, image, course_path="course"):
         super().__init__()
         self.count = count
         self.number = number
         self.list = list
         self.pages = info
         self.pictures = image
+        self.course_path = course_path
 
         main_layout = QVBoxLayout()
 
@@ -26,8 +28,10 @@ class Shablon(QWizardPage):
         main_layout.addLayout(button_layout)
 
         if(self.list[number] == 0):
-            # text = load_file("course\\data\\" + self.pages[self.number])
-            # markdown_text = markdown.markdown(text)
+            # Используем путь к курсу
+            file_path = os.path.join(self.course_path, "data", self.pages[self.number])
+            text = load_file(file_path)
+            markdown_text = markdown.markdown(text)
 
             scroll = QScrollArea()
             scroll.setWidgetResizable(True)
@@ -37,22 +41,16 @@ class Shablon(QWizardPage):
             content_widget = QWidget()
             content_layout = QVBoxLayout(content_widget)
 
-            info_label = QLabel("jjjjjj jjjjjjj jjjjjjjjj jjjjjj jjjjjj"
-                                "jjjjjj jjjjjjjj jjjjjjjj jjjjjj jjjj jjj"
-                                "jjjjjjj jjjj jjjjjjjj jjjjjjjjj jj jj jjjjjjjj"
-                                "jjj jj  j jjj jjjj jjjjjjjj jjjjjjjj jjjjjjjjj jjj"
-                                "jjjjjjjj jjjjj jjjjjjj jjjjjjj jjjj jjjjjj j jjj jjjjjjj jjjjjjjjjjjjjjj jjjjjjjj jjjjjjjjj jjjjjjjjjjj jjjjjjjjjjj jjjjjjjjj jjjj cwbvowvno nqovn vnqonvpqvnpqv vnpqvnp2nvmp2bvmp2b bn2pnbp2mbp2mbp2mbp2mbp2mbp2b vn2pnp2mnbp2mbp2mbp2vnp2m vn2pvn2pvp2vm2pvm2pvm2pvm mvp2mvp2vm2pvmp2vmp2vmp2m vp2mvp2mvp2mvp2mvp2mv vmp2vmp2vmp2vmp2vmp2v vm2pvm2pvmp2mvp2mvp2vmp2mv bqiwbvoqboqbowqbnownbowinbow nvqoboqnvboqnboqnboqnboqnbo vnovnovno2vno2vnownvownvow vnownvownvownvownvownvownv nvownvownvownvownvownvownvown wvnowvnowvnowvnownvownvownv vn wovnwovnownvownvownv vnwovnovnonvownv vnwovnwonvownvow vnwovnownvownvownv vnwovnwovnownvownvow bwi vbiwbviw viwbvibwvi vivbi2vb2ibvi2 vbi2vbi2vbi2v vb2ivbi32bvi3v 3vb i3vbi3vb2 vi2vbi ibi2 2i bi3bibib2ighbvbi2 iv 3bv 2vi3v i3v 3vb 3ii3vb")
-
-            # info_label = QLabel(markdown_text)
+            info_label = QLabel(markdown_text)
             info_label.setWordWrap(True)
             info_label.setTextFormat(Qt.RichText)
-            # info_label.setMinimumHeight(500)
+            info_label.setMinimumHeight(500)
 
             basement_label = QLabel()
 
             content_layout.addWidget(info_label)
             content_layout.addWidget(basement_label)
-            # content_layout.addStretch()
+            content_layout.addStretch()
 
             scroll.setWidget(content_widget)
 
@@ -60,55 +58,39 @@ class Shablon(QWizardPage):
             self.setLayout(main_layout)
 
         if(self.list[number] == 1):
-            # text = load_file("course\\data\\" + self.pages[self.number])
-            #
-            # text_query = text.split("\n")[0]
-            # text_answer_1 = text.split("\n")[1]
-            # text_answer_2 = text.split("\n")[2]
-            # text_answer_3 = text.split("\n")[3]
-            # text_answer_4 = text.split("\n")[4]
-            # self.answer = text.split("\n")[5]
+            file_path = os.path.join(self.course_path, "data", self.pages[self.number])
+            text = load_file(file_path)
+            
+            text_query = text.split("\n")[0]
+            text_answer_1 = text.split("\n")[1]
+            text_answer_2 = text.split("\n")[2]
+            text_answer_3 = text.split("\n")[3]
+            text_answer_4 = text.split("\n")[4]
+            self.correct_answer = int(text.split("\n")[5])
 
-            # markdown_text_query = markdown.markdown(text_query)
-            # markdown_text_answer_1 = markdown.markdown(text_answer_1)
-            # markdown_text_answer_2 = markdown.markdown(text_answer_2)
-            # markdown_text_answer_3 = markdown.markdown(text_answer_3)
-            # markdown_text_answer_4 = markdown.markdown(text_answer_4)
+            markdown_text_query = markdown.markdown(text_query)
+            markdown_text_answer_1 = markdown.markdown(text_answer_1)
+            markdown_text_answer_2 = markdown.markdown(text_answer_2)
+            markdown_text_answer_3 = markdown.markdown(text_answer_3)
+            markdown_text_answer_4 = markdown.markdown(text_answer_4)
 
-            # query_label = QLabel(markdown_text_query)
-            group_box = QGroupBox("Выберите ответы")  # можно добавить заголовок
-
-            group_layout = QVBoxLayout()
-            group_box.setLayout(group_layout)
-            #
-            # self.answer1 = QCheckBox(markdown_text_answer_1)
-            # self.answer2 = QCheckBox(markdown_text_answer_2)
-            # self.answer3 = QCheckBox(markdown_text_answer_3)
-            # self.answer4 = QCheckBox(markdown_text_answer_4)
-            #
-            # group_layout.addWidget(self.answer1)
-            # group_layout.addWidget(self.answer2)
-            # group_layout.addWidget(self.answer3)
-            # group_layout.addWidget(self.answer4)
-
-            query_label = QLabel("3")
-            group_box = QGroupBox("Выберите ответы")  # можно добавить заголовок
+            query_label = QLabel(markdown_text_query)
+            group_box = QGroupBox("Выберите ответ")
 
             group_layout = QVBoxLayout()
             group_box.setLayout(group_layout)
 
-            self.answer = 3
-            self.answer1 = QRadioButton("Вариант ответа 1")
-            self.answer2 = QRadioButton("Вариант ответа 2")
-            self.answer3 = QRadioButton("Вариант ответа 3")
-            self.answer4 = QRadioButton("Вариант ответа 4")
-            self.buttonAnswer = QPushButton("проверить")
+            self.answer1 = QRadioButton(markdown_text_answer_1)
+            self.answer2 = QRadioButton(markdown_text_answer_2)
+            self.answer3 = QRadioButton(markdown_text_answer_3)
+            self.answer4 = QRadioButton(markdown_text_answer_4)
+            self.buttonAnswer = QPushButton("Проверить")
 
             self.answer_group = QButtonGroup()
-            self.answer_group.addButton(self.answer1, 1)  # ID = 1
-            self.answer_group.addButton(self.answer2, 2)  # ID = 2
-            self.answer_group.addButton(self.answer3, 3)  # ID = 3
-            self.answer_group.addButton(self.answer4, 4)  # ID = 4
+            self.answer_group.addButton(self.answer1, 1)
+            self.answer_group.addButton(self.answer2, 2)
+            self.answer_group.addButton(self.answer3, 3)
+            self.answer_group.addButton(self.answer4, 4)
 
             group_layout.addWidget(self.answer1)
             group_layout.addWidget(self.answer2)
@@ -132,9 +114,8 @@ class Shablon(QWizardPage):
 
             target_height = 400
 
-            image = QPixmap("course\\images\\" + self.pictures[self.number])
-            # text = load_file("course\\data\\" + self.pages[self.number])
-            # markdown_text = markdown.markdown(text)
+            image_path = os.path.join(self.course_path, "images", self.pictures[self.number])
+            image = QPixmap(image_path)
             scaled_image = image.scaledToHeight(target_height, Qt.SmoothTransformation)
             image_label = QLabel(self)
             image_label.setPixmap(scaled_image)
@@ -144,7 +125,6 @@ class Shablon(QWizardPage):
             page_height = image_size.height() + 150
             self.setFixedSize(page_width, page_height)
 
-            # legend_label = QLabel(markdown_text)
             legend_label = QLabel()
             legend_label.setWordWrap(True)
             legend_label.setTextFormat(Qt.RichText)
@@ -161,15 +141,14 @@ class Shablon(QWizardPage):
         """Проверка правильности ответа"""
         selected_id = self.answer_group.checkedId()
 
-        if selected_id == -1:  # ничего не выбрано
+        if selected_id == -1:
             QMessageBox.warning(self, "Ошибка", "Пожалуйста, выберите ответ!")
             return
 
-        if selected_id == self.answer:
-            QMessageBox.information(self, "Результат", "Правильно!")
-            # Действие при правильном ответе
+        if selected_id == self.correct_answer:
+            QMessageBox.information(self, "Результат", "Правильно! Молодец!😉")
         else:
-            QMessageBox.information(self, "Результат", "Неправильно!")
+            QMessageBox.information(self, "Результат", "Неправильно! Попробуйте снова!☹️")
 
             self.answer_group.setExclusive(False)
             self.answer1.setChecked(False)

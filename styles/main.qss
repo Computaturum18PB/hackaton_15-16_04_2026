@@ -1,0 +1,253 @@
+/* styles/main.qss - стили для главного окна в стиле природы и химии */
+
+/* Основное окно - фон оставляет стандартным для сохранения системных кнопок */
+MainWindow {
+    background-color: #f0f7f0;
+}
+
+/* Основной контейнер */
+QWidget {
+    background-color: #f0f7f0;
+    font-family: "Segoe UI", "Microsoft YaHei", "Arial", sans-serif;
+    font-size: 14px;
+    color: #2d4a2d;
+}
+
+/* Заголовок приветствия - стилизован под химическую пробирку */
+QLabel#welcome_label {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #2e7d32, stop:0.5 #388e3c, stop:1 #43a047);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border: 1px solid #1b5e20;
+}
+
+/* Заголовок авторского курса */
+QLabel#author_course_label {
+    color: #1b5e20;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    padding: 5px;
+    background-color: rgba(46, 125, 50, 0.1);
+    border-radius: 8px;
+}
+
+/* Описание добавления курса */
+QLabel#describe_label {
+    color: #2e7d32;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+/* Стили для QListWidget (список файлов) */
+QListWidget#file_list {
+    background-color: #ffffff;
+    border: 2px solid #81c784;
+    border-radius: 12px;
+    padding: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-height: 200px;
+}
+
+QListWidget#file_list::item {
+    background-color: #f1f8e9;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 3px;
+}
+
+QListWidget#file_list::item:hover {
+    background-color: #dcedc8;
+    border: 1px solid #81c784;
+}
+
+QListWidget#file_list::item:selected {
+    background-color: #c8e6c9;
+    border: 2px solid #4caf50;
+}
+
+/* RadioButton стили в стиле химических элементов */
+QRadioButton {
+    color: #1b5e20;
+    spacing: 10px;
+    margin: 8px;
+    padding: 6px;
+    background-color: rgba(76, 175, 80, 0.1);
+    border-radius: 8px;
+}
+
+QRadioButton:hover {
+    background-color: rgba(76, 175, 80, 0.2);
+}
+
+QRadioButton::indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: 2px solid #66bb6a;
+    background-color: white;
+}
+
+QRadioButton::indicator:hover {
+    border-color: #2e7d32;
+    background-color: #e8f5e9;
+}
+
+QRadioButton::indicator:checked {
+    border-color: #2e7d32;
+    background-color: #4caf50;
+}
+
+/* Кнопки в стиле химических реактивов */
+QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #4caf50, stop:1 #388e3c);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 8px;
+    min-width: 140px;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #66bb6a, stop:1 #43a047);
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2e7d32, stop:1 #1b5e20);
+}
+
+QPushButton#author_course_button {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ff9800, stop:1 #f57c00);
+}
+
+QPushButton#author_course_button:hover {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #ffb74d, stop:1 #ff9800);
+}
+
+QPushButton#add_file_button {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #2196f3, stop:1 #1976d2);
+}
+
+QPushButton#add_file_button:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #42a5f5, stop:1 #2196f3);
+}
+
+QPushButton#create_course_button {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #9c27b0, stop:1 #7b1fa2);
+}
+
+QPushButton#create_course_button:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #ab47bc, stop:1 #9c27b0);
+}
+
+/* Кнопка удаления */
+QPushButton#delete_button {
+    background: #ef5350;
+    min-width: 32px;
+    max-width: 32px;
+    min-height: 32px;
+    max-height: 32px;
+    padding: 5px;
+    border-radius: 16px;
+    font-size: 16px;
+}
+
+QPushButton#delete_button:hover {
+    background: #e53935;
+}
+
+/* Стили для элементов в QListWidget */
+QWidget#list_item_widget {
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+QLabel#icon_label {
+    font-size: 24px;
+    min-width: 50px;
+    background-color: transparent;
+}
+
+QLabel#file_name_label {
+    color: #2d4a2d;
+    font-size: 13px;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+/* ScrollBar стили */
+QScrollBar:vertical {
+    background-color: #e8f5e9;
+    width: 14px;
+    border-radius: 7px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #81c784;
+    border-radius: 7px;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #4caf50;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar:horizontal {
+    background-color: #e8f5e9;
+    height: 14px;
+    border-radius: 7px;
+    margin: 2px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #81c784;
+    border-radius: 7px;
+    min-width: 20px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #4caf50;
+}
+
+/* Стили для системной строки заголовка */
+MainWindow::title {
+    background-color: #2e7d32;
+    color: white;
+}
+
+/* Обеспечиваем доступность системных кнопок */
+QWidget#qt_app_window {
+    background-color: #f0f7f0;
+}
+
+/* Сохраняем стандартную рамку окна */
+MainWindow {
+    background-color: #f0f7f0;
+    border: none;
+}
