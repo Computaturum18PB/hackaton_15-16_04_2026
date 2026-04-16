@@ -25,7 +25,7 @@ class MainWindow(QWidget):
 
         self.setWindowTitle("____")
         
-        self.setWindowIcon(QIcon(QPixmap("images/icon.png")))
+        self.setWindowIcon(QIcon(QPixmap("images/app_icon.ico")))
         self.resize(1200, 800)
 
         main_layuot = QVBoxLayout()
@@ -83,7 +83,7 @@ class MainWindow(QWidget):
         info = ["lesson1.md", "", "lesson2.md", "", "lesson3.md", "", "lesson4.md", "lesson5.md", "lesson6.md"] 
         image = ["", "image1.jpeg", "", "image2.png", "", "image3.png", "", "", ""]
         
-        wizard = BaseWizard1(len(list_types), list_types, info, image, self, "course")
+        wizard = BaseWizard1(len(list_types), list_types, info, image, self, "course", "images/icon.png")
         wizard.show()
     
     @Slot()

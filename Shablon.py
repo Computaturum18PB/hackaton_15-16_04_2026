@@ -1,7 +1,8 @@
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QWizardPage,
                                QGroupBox, QPushButton, QLabel, QLineEdit, QCheckBox,
                                QRadioButton, QButtonGroup, QMessageBox, QScrollArea)
-from PySide6.QtGui import QPixmap, Qt
+from PySide6.QtGui import QPixmap, Qt, QIcon
+from PySide6.QtCore import QSize
 import markdown
 import os
 
@@ -21,11 +22,29 @@ class Shablon(QWizardPage):
 
         main_layout = QVBoxLayout()
 
-        button_layout = QHBoxLayout()
+        image_layout = QHBoxLayout()
         for i in range(count):
-            button = QPushButton()
-            button_layout.addWidget(button)
-        main_layout.addLayout(button_layout)
+
+            if list[i] == 0:
+                if i <= number:
+                    image = QPixmap("images\\done_theory.png")
+                else:
+                    image = QPixmap("images\\undone_theory.png")
+            elif list[i] == 1:
+                if i <= number:
+                    image = QPixmap("images\\done_test.png")
+                else:
+                    image = QPixmap("images\\undone_test.png")
+            else:
+                if i <= number:
+                    image = QPixmap("images\\done_image.png")
+                else:
+                    image = QPixmap("images\\undone_image.png")
+            image_label = QLabel()
+            image_label.setPixmap(image)
+            image_layout.addWidget(image_label)
+
+        main_layout.addLayout(image_layout)
 
         if(self.list[number] == 0):
             # Используем путь к курсу
@@ -105,6 +124,17 @@ class Shablon(QWizardPage):
             self.setLayout(main_layout)
     
         if (self.list[self.number] == 2):
+
+            legend_label = QLabel()
+            legend_label.setWordWrap(True)
+            legend_label.setTextFormat(Qt.RichText)
+
+            if(self.pages[self.number] != ""):
+                file_path = os.path.join(self.course_path, "data", self.pages[self.number])
+                text = load_file(file_path)
+                markdown_text = markdown.markdown(text)
+                legend_label.setText(markdown_text)
+
             scroll = QScrollArea()
             scroll.setWidgetResizable(True)
             scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -138,7 +168,6 @@ class Shablon(QWizardPage):
             self.setLayout(main_layout)
 
     def check_answer(self):
-        """Проверка правильности ответа"""
         selected_id = self.answer_group.checkedId()
 
         if selected_id == -1:
