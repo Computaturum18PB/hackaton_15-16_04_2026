@@ -79,9 +79,9 @@ class MainWindow(QWidget):
 
     @Slot()
     def start_ready_course(self):
-        list_types = [0, 2, 0, 2, 0, 2, 0, 0, 0]  
-        info = ["lesson1.md", "", "lesson2.md", "", "lesson3.md", "", "lesson4.md", "lesson5.md", "lesson6.md"] 
-        image = ["", "image1.jpeg", "", "image2.png", "", "image3.png", "", "", ""]
+        list_types = [0, 2, 0, 2, 0, 2, 0, 0, 0, 0]  
+        info = ["lesson1.md", "", "lesson2.md", "", "lesson3.md", "", "lesson4.md", "lesson5.md", "lesson6.md", "practice1.md"] 
+        image = ["", "image1.jpeg", "", "image2.png", "", "image3.png", "", "", "", ""]
         
         wizard = BaseWizard1(len(list_types), list_types, info, image, self, "course", "images/icon.png")
         wizard.show()
