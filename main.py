@@ -23,14 +23,14 @@ class MainWindow(QWidget):
         if not os.path.exists(os.path.join(self.course_folder, "images")):
             os.makedirs(os.path.join(self.course_folder, "images"))
 
-        self.setWindowTitle("____")
+        self.setWindowTitle("Спектр")
         
         self.setWindowIcon(QIcon(QPixmap("images/app_icon.ico")))
         self.resize(1200, 800)
 
         main_layuot = QVBoxLayout()
 
-        title_label = QLabel("Добро пожаловать в приложение ____! Вы можете выбрать наш авторский курс или загрузить свой! Приятного обучения!😁")
+        title_label = QLabel("Добро пожаловать в приложение Спектр! Вы можете выбрать наш авторский курс или загрузить свой! Приятного обучения!😁")
         title_label.setWordWrap(True)
 
         author_course = QLabel("Авторский обучающий курс: \"Переработка нефти\"")
@@ -79,9 +79,9 @@ class MainWindow(QWidget):
 
     @Slot()
     def start_ready_course(self):
-        list_types = [0, 2, 0, 2, 0, 2, 0, 0, 0, 0]  
-        info = ["lesson1.md", "", "lesson2.md", "", "lesson3.md", "", "lesson4.md", "lesson5.md", "lesson6.md", "practice1.md"] 
-        image = ["", "image1.jpeg", "", "image2.png", "", "image3.png", "", "", "", ""]
+        list_types = [0, 2, 1, 1, 1, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 1, 1, 1]  
+        info = ["lesson1.md", "", "test1.md", "test2.md", "test3.md", "lesson2.md", "", "lesson3.md", "", "lesson4.md", "lesson5.md", "lesson6.md", "lesson7.md", "lesson8.md", "practice1.md", "test4.md", "test5.md", "test6.md"] 
+        image = ["", "image1.jpeg", "", "", "", "", "image2.png", "", "image3.png", "", "", "", "", "", "", "", "", ""]
         
         wizard = BaseWizard1(len(list_types), list_types, info, image, self, "course", "images/icon.png")
         wizard.show()
